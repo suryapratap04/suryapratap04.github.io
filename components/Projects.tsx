@@ -13,6 +13,12 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import { ExternalLink, Code, Eye } from "lucide-react";
+import Pool from "@/public/Pool-Image.png";
+import tictactoe from "@/public/tictactoe.png";
+import backend from "@/public/backend.png";
+import evm from "@/public/EVM.png";
+import careplus from "@/public/careplus.png";
+import learnsphere from "@/public/learnsphere.png";
 
 interface Project {
   title: string;
@@ -23,38 +29,80 @@ interface Project {
 }
 
 export default function Projects() {
-  const [activeTab, setActiveTab] = useState<"fullstack" | "mini" | "landing">(
-    "fullstack"
-  );
+  const [activeTab, setActiveTab] = useState<
+    "fullstack" | "frontend" | "backend"
+  >("fullstack");
   const [, setHoveredIndex] = useState<number | null>(null);
 
   const projects: Record<string, Project[]> = {
     fullstack: [
-      // {
-      //   title: "LearnSphere",
-      //   url: "https://project-study-notion.vercel.app/",
-      //   imageUrl: ``,
-      //   github: "",
-      //   techStack: ["React", "Express", "Node.js", "MongoDB"],
-      // },
+      {
+        title: "LearnSphere",
+        url: "https://project-study-notion.vercel.app/",
+        imageUrl: learnsphere.src,
+        github: "https://github.com/suryapratap04/Frontend-StudyNotion",
+        techStack: ["React", "Express", "Node.js", "MongoDB"],
+      },
+      {
+        title: "CarePLus",
+        url: "https://careplus-pi.vercel.app/",
+        imageUrl: careplus.src,
+        github: "https://github.com/suryapratap04/careplus",
+        techStack: ["React", "Express", "Node.js", "MongoDB", "Tailwind CSS"],
+      },
+      {
+        title: "SocialStream",
+        url: "https://streamsocial.vercel.app/",
+        imageUrl: careplus.src,
+        github: "https://github.com/suryapratap04/SocialStream",
+        techStack: ["React", "Express", "Node.js", "MongoDB", "Tailwind CSS"],
+      },
     ],
-    mini: [
-      // {
-      //   title: "",
-      //   url: "",
-      //   imageUrl: ``,
-      //   github: "",
-      //   techStack: ["Next.js", "React", "Tailwind CSS"],
-      // },
+    frontend: [
+      {
+        title: "Pool Project",
+        url: "https://pool.suryapratap.me/",
+        imageUrl: Pool.src,
+        github: "https://github.com/suryapratap04/Pool-Project",
+        techStack: ["HTML", "CSS", "Tailwind CSS"],
+      },
+      {
+        title: "Tic Tac Toe",
+        url: "https://tictactoe.suryapratap.me/",
+        imageUrl: tictactoe.src,
+        github: "https://github.com/suryapratap04/Pool-Project",
+        techStack: ["React", "Context api", "Tailwind CSS"],
+      },
+      {
+        title: "EVM Bridge",
+        url: "https://github.com/suryapratap04/EVM-Bridge",
+        imageUrl: evm.src,
+        github: "https://github.com/suryapratap04/EVM-Bridge",
+        techStack: ["React", "Context api", "Tailwind CSS", "Solidity"],
+      },
     ],
-    landing: [
-      // {
-      //   title: "",
-      //   url: "",
-      //   imageUrl: ``,
-      //   github: "",
-      //   techStack: ["Next.js", "React", "Tailwind CSS"],
-      // },
+    backend: [
+      {
+        title: "Backend Project",
+        url: "https://github.com/suryapratap04/Backend-Projects",
+        imageUrl: backend.src,
+        github: "https://github.com/suryapratap04/Backend-Projects",
+        techStack: ["Node.js", "MongoDB", "Express"],
+      },
+      {
+        title: "LearnSphere Backend",
+        url: "https://backend-studynotion-sjz8.onrender.com",
+        imageUrl: backend.src,
+        github: "https://github.com/suryapratap04/Backend-StudyNotion",
+        techStack: ["Node.js", "MongoDB", "Express"],
+      },
+      {
+        title: "Assignment Submission",
+        url: "https://assignment-submission-portal-x36f.onrender.com/",
+        imageUrl: backend.src,
+        github: "https://github.com/suryapratap04/Assignment-Submission-Portal",
+        techStack: ["Node.js", "MongoDB", "Express", "TypeScript"],
+      },
     ],
   };
 
@@ -111,7 +159,7 @@ export default function Projects() {
         {/* Tabs */}
         <div className="flex justify-center rounded-xl mb-10">
           <div className="inline-flex p-1 bg-gray-900/50 rounded-xl">
-            {(["fullstack", "mini", "landing"] as const).map((tab) => (
+            {(["fullstack", "frontend", "backend"] as const).map((tab) => (
               <button
                 key={tab}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
@@ -123,9 +171,9 @@ export default function Projects() {
               >
                 {tab === "fullstack"
                   ? "Fullstack Projects"
-                  : tab === "mini"
-                  ? "Mini Projects"
-                  : "Landing Pages"}
+                  : tab === "frontend"
+                  ? "Frontend Projects"
+                  : "Backend Projects"}
               </button>
             ))}
           </div>
